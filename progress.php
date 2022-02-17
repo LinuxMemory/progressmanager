@@ -24,6 +24,7 @@ $row = mysqli_fetch_assoc($result);
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 $increaser = $_POST['spent_hours_today'];
+
 	
 $sqlupdate = "update progress set hours=$increaser";
 
@@ -54,32 +55,49 @@ mysqli_query($conn, $sqlreset);
 
 
 <html>
-<body>
+	<link rel="stylesheet" href="css/progress.css">
+
 	
-	<br>
+<body class="align">
+
+<div class="grid align__item">
+
+<div class="register">
+<form action="" method="post" class="form">
+<div class="form__field">
 	
-<label for="all_spent_hours">Progress in %</label>
-<input type="text" name="all_spent_hours" id="all_spent_hours" value="<?php echo $row['hours'] * 0.40; ?>">
+<p>Progress in %</p>
 	
-	
+<input type="text" name="all_spent_hours" readonly="readonly" id="all_spent_hours" value="<?php echo $row['hours'] * 0.40; ?>">
 	
 	
 <form method="post">
-	
-	<label for="spent_hours_today">Spent hours today</label>
-	<input type="text" id="spent_hours_today" name="spent_hours_today" > 
-	
-	
-	<button>Add values</button>
-	
+
+<input type="submit" value="Spent hours today">
+<p></p>
+<br>
+<input type="text" id="spent_hours_today" name="spent_hours_today" > 
+
+
 </form>
-
-
 	
+	
+
+<br>
+
 <form action="progress.php" method="post">
     <input type="submit" name="Reset" value="Reset" />
 </form>
 	
-	
+
+</div>
+</form>
+
+
+
+</div>
+
+</div>
+
 </body>
 </html>
