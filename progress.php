@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 $increaser = $_POST['spent_hours_today'];
 
-	
-$sqlupdate = "update progress set hours=$increaser";
+$total_hours = $row['hours'] + $increaser;
+$sqlupdate = "update progress set hours=$total_hours";
 
 mysqli_query($conn, $sqlupdate);
 
